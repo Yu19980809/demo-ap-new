@@ -12,19 +12,20 @@ const Learn = () => {
   const [units, setUnits] = useState<Unit[]>([])
 
   useEffect(() => {
-    axios.get('/api/syllabus/units')
-      .then(res => setUnits(res?.data))
-      .catch(err => {
-        toast.error('Failed to fetch data')
-        console.log('ERROR_GET_SYLLABUS', err)
-      })
+    const fetchData = async () => {
+      const res = await axios.get('/api/syllabus/units')
+      if (!res) return toast.error('Failed to fetch data')
+      setUnits(res.data)
+    }
+
+    fetchData()
   }, [])
 
   return (
     <div className="h-full">
       <Navbar />
 
-      <Container className="h-[calc(100vh-80px)]">
+      <Container>
         <div className="w-full h-full py-10">
           <h1 className="w-full font-semibold text-xl text-center">Syllabus</h1>
 

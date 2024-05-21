@@ -1,3 +1,35 @@
+export enum Difficulty {
+  HARD = 'Hard',
+  MEDIUM = 'Medium',
+  EASY = 'Easy'
+}
+
+export enum Mode {
+  PRACTICE = 'practice',
+  EXAM = 'exam'
+}
+
+export enum FrqDescTab {
+  DESCRIPTION = 'Description',
+  SOLUTIONS = 'Solution',
+  EXPLANATION = 'Explanation',
+  RESULT = 'Result'
+}
+
+export type TestResult = {
+  passed: boolean
+  error: string | null
+  input: string
+  output: string
+  prerequisite: string
+}
+
+export type RunResult = {
+  run_status: number
+  compilation_error: string | null
+  test_results: TestResult[]
+}
+
 export type Unit = {
   name: string
   topics: Topic[]
@@ -22,14 +54,50 @@ export type EssentialKnowledge = {
   topic_name: string
 }
 
-// {
-//   "name": "System.out.print and System.out.println display information on the computer monitor.",
-//   "unit_id": 1,
-//   "unit_name": "Primitive Types",
-//   "topic_id": "1.1",
-//   "topic_name": "Why Programming? Why Java?"
-// }
+export type Mcq = {
+  name: string
+  description: string
+  choices: Choice[]
+}
 
+export type McqWithStatus = {
+  name: string
+  description: string
+  isFinished: boolean
+  isStarred: boolean
+  isMarked: boolean
+  userAnswer: ChoiceLabel[]
+  choices: Choice[]
+}
+
+export type Frq = {
+  id: string
+  description: string
+  metadata: {
+    year: number
+    number: number
+    name: string
+    difficulty: Difficulty
+  },
+  solutions: {
+    class_name: string
+    content: string
+  }[]
+}
+
+export type FrqItem = {
+  id: string
+  metadata: {
+    year: number
+    number: number
+    name: string
+    topic: string
+    sub_topic: string
+    difficulty: Difficulty
+    language: string
+    keynotes: string[]
+  }
+}
 
 // --------------
 
@@ -104,13 +172,13 @@ export type PracticeMcqQuestion = {
 // }
 
 
-export type Frq = {
-  id: string
-  questionId: string
-  name: string
-  topicId: string
-  topicName: string
-  subTopic: string
-  difficulty: string
-  keynotes: string[]
-}
+// export type Frq = {
+//   id: string
+//   questionId: string
+//   name: string
+//   topicId: string
+//   topicName: string
+//   subTopic: string
+//   difficulty: string
+//   keynotes: string[]
+// }

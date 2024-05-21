@@ -9,6 +9,9 @@ import {
 
 import { ChoiceLabel, FrqTab, QuestionTab } from '@/lib/types'
 
+export const examMcqTimeLimit = 60 * 30
+export const examFrqTimeLimit = 60 * 30
+
 export const descriptionTabs = [
   {
     label: 'Description',

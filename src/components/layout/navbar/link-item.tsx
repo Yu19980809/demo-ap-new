@@ -9,9 +9,7 @@ import {
 } from '@/components/ui/hover-card'
 
 type Props = {
-  index: number
-  activeIndex: number | null
-  setActiveIndex: (index: number | null) => void
+  path: string
   item: {
     label: string
     href: string
@@ -22,12 +20,8 @@ type Props = {
   }
 }
 
-const LinkItem = ({ item, index, activeIndex, setActiveIndex }: Props) => {
-  const isActive = index === activeIndex
-
-  const onSelect = () => {
-    setActiveIndex(index)
-  }
+const LinkItem = ({ path, item }: Props) => {
+  const isActive = path.includes(item.href)
 
   return (
     <>
@@ -36,10 +30,10 @@ const LinkItem = ({ item, index, activeIndex, setActiveIndex }: Props) => {
           <HoverCardTrigger asChild>
             <div className={cn(
               'group flex items-center gap-x-2 cursor-pointer',
-              isActive && 'text-muted-foreground'
+              isActive && 'text-foreground'
             )}>
-              <span className="hover:text-muted-foreground">{item.label}</span>
-              <ChevronRight className="w-4 h-4 text-muted-foreground transition-all group-hover:rotate-90" />
+              <span className="hover:text-foreground">{item.label}</span>
+              <ChevronRight className="w-4 h-4 text-foreground transition-all group-hover:rotate-90" />
             </div>
           </HoverCardTrigger>
 
@@ -49,7 +43,6 @@ const LinkItem = ({ item, index, activeIndex, setActiveIndex }: Props) => {
                 <Link
                   key={content.href}
                   to={content.href}
-                  onClick={onSelect}
                   className="hover:underline"
                 >
                   {content.label}
@@ -63,10 +56,9 @@ const LinkItem = ({ item, index, activeIndex, setActiveIndex }: Props) => {
       {(!item.content || item.content.length === 0) && (
         <Link
           to={item.href}
-          onClick={onSelect}
           className={cn(
-            'cursor-pointer hover:text-muted-foreground',
-            isActive && 'text-muted-foreground'
+            'cursor-pointer hover:text-foreground',
+            isActive && 'text-foreground'
           )}
         >
           {item.label}

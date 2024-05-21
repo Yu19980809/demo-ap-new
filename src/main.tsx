@@ -1,4 +1,4 @@
-import React from 'react'
+// import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { Toaster } from 'react-hot-toast'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
@@ -81,10 +81,10 @@ const router = createBrowserRouter([
 ])
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
       <RouterProvider router={router} />
       <Toaster position="top-center" />
     </ThemeProvider>
-  </React.StrictMode>,
+  // </React.StrictMode>,
 )

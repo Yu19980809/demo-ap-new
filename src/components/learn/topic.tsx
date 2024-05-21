@@ -14,7 +14,7 @@ const TopicItem = ({ data }: { data: Topic }) => {
     <Accordion type="multiple" className="w-full">
       <AccordionItem key={data.id} value={data.id}>
         <AccordionTrigger>
-          <div className="flex items-center gap-x-2">
+          <div className="flex items-center gap-x-2 hover:text-muted-foreground">
             <Mic className="w-5 h-5 text-muted-foreground" />
             <span>Topic {data.id}</span>
             <span>{data.name}</span>

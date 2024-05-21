@@ -9,7 +9,7 @@ const Home = () => {
     <div className="h-full">
       <Navbar />
 
-      <Container className="h-[calc(100vh-80px)]">
+      <Container>
         <div className="flex w-full h-full">
           <div className="flex justify-center items-center flex-1">
             <div className="grid grid-cols-2 md:gap-8 gap-4">

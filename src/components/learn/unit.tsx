@@ -19,7 +19,7 @@ const UnitItem = ({ index, data }: Props) => {
     <Accordion type="single" collapsible className="w-full">
       <AccordionItem key={data.name} value={data.name}>
         <AccordionTrigger>
-          <div className="flex items-center gap-x-2">
+          <div className="flex items-center gap-x-2 hover:text-muted-foreground">
             <Database className="w-6 h-6 text-muted-foreground" />
             <span>Unit {index + 1}</span>
             <span>{data.name}</span>
